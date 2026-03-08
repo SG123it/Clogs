@@ -11,13 +11,18 @@
 #   |
 #   All source files
 
+#--------
+set(p_name CLOGS)
+set(p_ver 1.0)
+#--------
 
 cmake_minimum_required(VERSION 3.10...3.30)
 
-project(CLOGS VERSION 1.0)
+project(${p_name} VERSION ${p_ver})
 
 include_directories(header)
 set(SRC
-
+    SRC/CLOGS.cpp
 )
 
+add_library(${p_name} STATIC ${SRC})
