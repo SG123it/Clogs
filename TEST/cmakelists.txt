@@ -1,0 +1,19 @@
+#--------
+set(p_name CLOGS_TEST)
+set(p_ver 1.0)
+#--------
+
+cmake_minimum_required(VERSION 3.10...3.30)
+
+add_subdirectory(Clogs-BETA)
+
+project(${p_name} VERSION ${p_ver})
+
+set(SRC
+    main.cpp
+)
+
+add_executable(${p_name} ${SRC})
+target_include_directories(${p_name} PUBLIC Clogs-BETA/header)
+target_link_libraries(${p_name} PUBLIC CLOGS)
+
