@@ -2,6 +2,7 @@
 #include <chrono>
 #include <ctime>
 #include <filesystem>
+#include <fstream>
 
 #include <CLOGS.hpp>
 
@@ -58,11 +59,18 @@ void log::get(LOG_TYPE type, std::string MSG) {
 
     if (PrintToConsole) std::cout << return_text << std::endl;
     if (SaveToFile) {
+        if (AbsoluteFilePath == ".") AbsoluteFilePath = std::filesystem::current_path().string();
         if (!std::filesystem::exists(AbsoluteFilePath)) throw std::runtime_error("Unable to exists path to logs");
 
         std::filesystem::path path = AbsoluteFilePath;
         path /= FileName;
 
+        std::fstream file(path, std::ios::out | std::ios::app);
+        if (!file.is_open()) throw std::runtime_error("Unable to open logs file");
+        
+        file << return_text << std::endl;
+
+        file.close();
     }
 }
 
