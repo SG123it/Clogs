@@ -32,7 +32,7 @@ private:
     inline static bool PrintToConsole = true;
 
     /*Данная переменная должна содержать в себе булевое значение определяющее, будет ли программа в логи добавлять время
-    В формате: [HH] : [MM] : [SS], [MS(setprecision(2))]*/
+    В формате: [HH] : [MM] : [SS]*/
     inline static bool UseTime = true;
 
 public:
